@@ -1,0 +1,24 @@
+<section>
+  <div class="page-header">
+    <h1>{{vm.need._id ? 'Edit Need' : 'New Need'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.needForm" class="form-horizontal" ng-submit="vm.save(vm.form.needForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Name</label>
+          <input name="name" type="text" ng-model="vm.need.name" id="name" class="form-control" placeholder="Name" required>
+          <div ng-messages="vm.form.needForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Need name is required.</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">{{vm.need._id ? 'Update' : 'Create'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

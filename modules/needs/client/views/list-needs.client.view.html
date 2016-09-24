@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Needs</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="need in vm.needs"
+       ui-sref="needs.view({ needId: need._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="need.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="need.user" ng-bind="need.user.displayName"></span>
+        <span ng-if="!need.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="need.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.needs.$resolved && !vm.needs.length">
+    No Needs yet, why don't you <a ui-sref="needs.create">create one</a>?
+  </div>
+</section>
